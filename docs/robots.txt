@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vitalityuser.github.io/wifi-gamepad/sitemap.xml
