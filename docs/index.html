@@ -296,6 +296,8 @@
 
       <div class="badges">
         <span class="badge">Platform: Android 8.0+</span>
+        <span class="badge" style="background: rgba(0, 120, 212, 0.15); border-color: rgba(0, 120, 212, 0.4); color: #60A5FA;">Windows 10 / 11 (Xbox 360)</span>
+        <span class="badge" style="background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); color: #F3F4F6;">macOS (MacBook / iMac)</span>
         <span class="badge cyan">Latency: &lt; 2ms (UDP 120Hz)</span>
         <span class="badge green">Emulation: Xbox 360 (ViGEmBus)</span>
         <span class="badge">Multi-Player: 4-Player Local Co-Op</span>
@@ -306,8 +308,11 @@
         <a href="https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/WiFiGamepad.apk" class="btn btn-primary">
           📱 Download Android APK
         </a>
-        <a href="https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/ArachnidPad-PC-Server.zip" class="btn btn-primary" style="background: linear-gradient(135deg, #107C41 0%, #0B532B 100%); box-shadow: 0 6px 25px rgba(16, 124, 65, 0.4);">
-          💻 Download PC Server (ZIP)
+        <a href="https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/ArachnidPad-PC-Server.zip" class="btn btn-primary" style="background: linear-gradient(135deg, #0078D4 0%, #004C8C 100%); box-shadow: 0 6px 25px rgba(0, 120, 212, 0.4);">
+          💻 Download Windows Server
+        </a>
+        <a href="https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/ArachnidPad-Mac-Server.zip" class="btn btn-primary" style="background: linear-gradient(135deg, #374151 0%, #1F2937 100%); box-shadow: 0 6px 25px rgba(75, 85, 99, 0.4);">
+          🍎 Download macOS Server
         </a>
         <a href="https://github.com/VitalityUser/wifi-gamepad" class="btn btn-secondary">
           ⭐ View on GitHub
@@ -357,6 +362,11 @@
           <p>Turn your phone into a PC trackpad. Glide to steer the cursor and tap to click for easy navigation of game launchers and desktop windows.</p>
         </div>
         <div class="feature-card">
+          <div class="feature-icon">🍎</div>
+          <h3>Dedicated macOS &amp; MacBook Server</h3>
+          <p>Native CoreGraphics event simulation for macOS (Apple Silicon &amp; Intel). Enjoy wireless gaming in Apple Arcade, native Mac games, and emulators (OpenEmu, Dolphin, RPCS3).</p>
+        </div>
+        <div class="feature-card">
           <div class="feature-icon">👥</div>
           <h3>4-Player Local Co-Op</h3>
           <p>Connect up to 4 phones simultaneously on the same Wi-Fi network. The PC server automatically assigns Player 1 through Player 4 virtual slots.</p>
@@ -369,8 +379,9 @@
       <div class="step-item">
         <div class="step-num">1</div>
         <div>
-          <b>Run the PC Companion Server</b><br/>
-          Clone the repository and run <code>python server.py</code> in <code>wifi-gamepad/pc-server</code>. Click <i>1-Click Install ViGEm Driver</i> if you don't have ViGEmBus yet.
+          <b>Run the Companion Server (Windows PC or MacBook)</b><br/>
+          • <b>On Windows 10 / 11:</b> Extract <code>ArachnidPad-PC-Server.zip</code> and run <code>start_server.bat</code>.<br/>
+          • <b>On macOS (MacBook / iMac):</b> Extract <code>ArachnidPad-Mac-Server.zip</code> and double-click <code>start_server.command</code>.
         </div>
       </div>
       <div class="step-item">
@@ -384,7 +395,7 @@
         <div class="step-num">3</div>
         <div>
           <b>Auto-Connect &amp; Play</b><br/>
-          Ensure both devices are on the same Wi-Fi. The phone will auto-discover your PC and connect instantly. Start your game and play!
+          Ensure both devices are on the same Wi-Fi. The phone will auto-discover your Windows PC or MacBook and connect instantly. Start your game and play!
         </div>
       </div>
     </div>
