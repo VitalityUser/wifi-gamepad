@@ -1,0 +1,25 @@
+# Android Gradle build files
+.gradle/
+build/
+app/build/
+android/.gradle/
+android/app/build/
+android/local.properties
+local.properties
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+pc-server/__pycache__/
+pc-server/vgamepad/__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
