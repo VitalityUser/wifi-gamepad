@@ -1,14 +1,19 @@
 @echo off
-title WiFi Gamepad PC Server
+title ArachnidPad PC Server - Crimson Arachnid Edition
 cd /d "%~dp0"
 echo ========================================================
-echo          STARTING WIFI GAMEPAD PC SERVER
+echo       ARACHNIDPAD PC COMPANION SERVER (WINDOWS)
 echo ========================================================
 echo.
-py -3.14 server.py
+python server.py
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo Trying python fallback...
-    python server.py
+    echo Trying py launcher...
+    py server.py
 )
-pause
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo [ERROR] Python not found or encountered an issue.
+    echo Please install Python 3.8+ from https://www.python.org/downloads/
+    pause
+)

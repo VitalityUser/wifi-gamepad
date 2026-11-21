@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
     private static final String PREF_HAPTIC = "haptic_enabled";
     private static final String PREF_RUMBLE = "rumble_enabled";
     private static final String PREF_THEME = "current_theme";
+    private static final String PREF_MOUSE_SENSITIVITY = "mouse_sensitivity";
 
     private GamepadView gamepadView;
     private NetworkClient networkClient;
@@ -63,6 +65,10 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             gamepadView.setTheme(GamepadView.Theme.SPIDER);
         }
+
+        // Restore saved mouse sensitivity
+        float savedSens = prefs.getFloat(PREF_MOUSE_SENSITIVITY, 1.25f);
+        gamepadView.setMouseSensitivity(savedSens);
 
         setContentView(gamepadView);
 
@@ -251,6 +257,40 @@ public class MainActivity extends Activity {
             });
             layout.addView(themeBtn);
         }
+
+        // Mouse Sensitivity Section
+        TextView mouseHeader = new TextView(this);
+        mouseHeader.setText("\n🖱️ Touchpad Mouse Sensitivity:");
+        mouseHeader.setTextColor(Color.parseColor("#FF1744"));
+        mouseHeader.setTextSize(15f);
+        layout.addView(mouseHeader);
+
+        final TextView sensLabel = new TextView(this);
+        float currentSens = prefs.getFloat(PREF_MOUSE_SENSITIVITY, 1.25f);
+        sensLabel.setText(String.format("Sensitivity: %.1fx%s", currentSens, Math.abs(currentSens - 1.25f) < 0.15f ? " (Recommended)" : ""));
+        sensLabel.setTextColor(Color.WHITE);
+        layout.addView(sensLabel);
+
+        SeekBar seekBar = new SeekBar(this);
+        seekBar.setMax(30); // 0.2x to 3.2x
+        int initialProgress = Math.max(2, Math.min(30, Math.round(currentSens * 10f)));
+        seekBar.setProgress(initialProgress);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
+                float val = Math.max(0.2f, progress / 10f);
+                sensLabel.setText(String.format("Sensitivity: %.1fx%s", val, Math.abs(val - 1.25f) < 0.15f ? " (Recommended)" : ""));
+                gamepadView.setMouseSensitivity(val);
+                prefs.edit().putFloat(PREF_MOUSE_SENSITIVITY, val).apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar sb) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar sb) {}
+        });
+        layout.addView(seekBar);
 
         // Vibration options
         TextView vibHeader = new TextView(this);

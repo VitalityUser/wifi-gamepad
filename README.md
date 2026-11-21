@@ -100,22 +100,24 @@
 
 ## ⚡ Quick Start & Installation
 
+### 📥 1-Click Pre-Built Downloads
+- **📱 Android Controller App**: **[`WiFiGamepad.apk`](https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/WiFiGamepad.apk)**
+- **💻 Windows PC Server Package**: **[`ArachnidPad-PC-Server.zip`](https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/ArachnidPad-PC-Server.zip)**
+
 ### Step 1: Run the PC Companion Server (Windows)
-1. Clone or download the repository:
+1. Download and extract **[`ArachnidPad-PC-Server.zip`](https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/ArachnidPad-PC-Server.zip)**, or clone the repository:
    ```powershell
    git clone https://github.com/VitalityUser/wifi-gamepad.git
    cd wifi-gamepad/pc-server
    ```
-2. Start the server (Requires Python 3.8+ on Windows):
+2. Double-click `start_server.bat` or run:
    ```powershell
    python server.py
    ```
 3. *Optional for Virtual Controller Emulation*: If ViGEmBus is not yet installed on your system, click the **"📥 1-Click Install ViGEm Driver"** button inside the server dashboard. *(Otherwise, the server runs in Keyboard & Mouse fallback mode).*
 
 ### Step 2: Install the Android App
-- Download the pre-built APK from the [`bin/`](bin/WiFiGamepad.apk) directory:
-  - **[`WiFiGamepad.apk`](bin/WiFiGamepad.apk)**
-- Open the APK on your device (Android 8.0 or newer) and grant vibration permissions.
+- Open **[`WiFiGamepad.apk`](https://github.com/VitalityUser/wifi-gamepad/releases/download/v1.0.0/WiFiGamepad.apk)** on your Android device (Android 8.0 or newer) and grant vibration permissions.
 
 ### Step 3: Connect & Play
 1. Ensure your phone and PC are connected to the same Wi-Fi network (or PC Mobile Hotspot).

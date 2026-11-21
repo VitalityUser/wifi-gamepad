@@ -123,6 +123,7 @@ public class GamepadView extends View {
 
     private float trackpadPrevX = 0, trackpadPrevY = 0;
     private long trackpadDownTime = 0;
+    private float mouseSensitivity = 1.25f; // Smooth, calibrated trackpad sensitivity
 
     public GamepadView(Context context) {
         super(context);
@@ -168,6 +169,14 @@ public class GamepadView extends View {
 
     public boolean isTrackpadMode() {
         return trackpadMode;
+    }
+
+    public void setMouseSensitivity(float sensitivity) {
+        this.mouseSensitivity = Math.max(0.2f, Math.min(5.0f, sensitivity));
+    }
+
+    public float getMouseSensitivity() {
+        return mouseSensitivity;
     }
 
     public void setManagers(GamepadState state, NetworkClient client, VibrationManager vibrationManager) {
@@ -1103,10 +1112,15 @@ public class GamepadView extends View {
                 trackpadPrevX = info.currentX;
                 trackpadPrevY = info.currentY;
 
-                // Send relative mouse delta via gyroX / gyroY
+                // Smooth, calibrated natural mouse movement
+                float distance = (float) Math.hypot(dx, dy);
+                float acceleration = 1.0f + Math.min(distance * 0.02f, 0.8f);
+                int moveX = Math.round(dx * mouseSensitivity * acceleration);
+                int moveY = Math.round(dy * mouseSensitivity * acceleration);
+
                 synchronized (state) {
-                    state.gyroX = (short) Math.max(-32768, Math.min(32767, (int)(dx * 80)));
-                    state.gyroY = (short) Math.max(-32768, Math.min(32767, (int)(dy * 80)));
+                    state.gyroX = (short) Math.max(-32768, Math.min(32767, moveX));
+                    state.gyroY = (short) Math.max(-32768, Math.min(32767, moveY));
                 }
                 break;
         }
